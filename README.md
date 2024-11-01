@@ -10,3 +10,7 @@ Config package to setup RustDesk API on the armv7 based ReadyNAS system.
 - Upon successful execution of above commands..
 - Adjust /apps/rustdesk/conf/config.yaml and /apps/rustdesk/conf/env
 - Restart services once more: `for s in fvapp-rustdesk{-relay,-id,}; do systemctl restart $s; done`
+
+References:
+- [RustDesk Server (Self Hosted)](https://github.com/rustdesk/rustdesk-server)
+- [RustDesk API/Admin by @lejianwen](https://github.com/lejianwen/rustdesk-api/)
