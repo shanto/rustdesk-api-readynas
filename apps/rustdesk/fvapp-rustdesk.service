@@ -1,0 +1,17 @@
+[Unit]
+Description=RustDesk API Service
+After=apache2.service
+Requires=fvapp-rustdesk-id.service
+
+[Service]
+Type=simple
+ExecStart=/apps/rustdesk/apimain
+WorkingDirectory=/apps/rustdesk
+StandardOutput=journal
+StandardError=journal
+TimeoutSec=200
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

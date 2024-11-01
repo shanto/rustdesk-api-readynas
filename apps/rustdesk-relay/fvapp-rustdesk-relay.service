@@ -1,0 +1,15 @@
+[Unit]
+Description=RustDesk Relay Service
+PartOf=fvapp-rustdesk.service
+
+[Service]
+Type=exec
+ExecStart=/apps/rustdesk/hbbr
+WorkingDirectory=/apps/rustdesk/conf
+EnvironmentFile=/apps/rustdesk/conf/env
+RestartSec=10
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
