@@ -9,11 +9,9 @@ curl -sL https://api.github.com/repos/rustdesk/rustdesk-server/releases/latest |
 for act in {stop,disable}; do for bin in rustdesk-{hbbr,hbbs}; do echo systemctl $act $bin; done; done
 tar xvzf linux-armv7l.tar.gz
 chown -R admin:admin .
-ls -l release/ armv7/
+ls -l release/
 rm -rf ../{resources,docs,apimain}
-cp armv7/hbb* release/apimain ../
-cp -ar release/resources ../
-cp -ar release/docs ../
+cp -ar release/{resources,docs,apimain} ../
 pushd release/conf
 mkdir -p /var/run/rustdesk-server
 sed -i 's#\(lang: \)"[^"]*"#\1"en"#g' config.yaml
@@ -23,7 +21,7 @@ sed -i 's#\(path: \)"[^"]*log[^"]*"#\1""#g' config.yaml
 sed -i 's#\(file-dir: \)"./runtime/cache\([^"]*\)"#\1 "/var/run/rustdesk-server\2"#g' config.yaml
 popd
 cp -arn release/conf ../
-mkdir ../data
+mkdir -p ../data
 if [ -f ../conf/id_ed25519 ]; then
     systemctl start fvapp-rustdesk
 else

@@ -5,7 +5,7 @@ PartOf=fvapp-rustdesk.service
 
 [Service]
 Type=exec
-ExecStart=/apps/rustdesk/hbbs -r $RELAY
+ExecStart=/usr/bin/hbbs -r $RELAY --mask $MASK
 WorkingDirectory=/apps/rustdesk/conf
 EnvironmentFile=/apps/rustdesk/conf/env
 RestartSec=10

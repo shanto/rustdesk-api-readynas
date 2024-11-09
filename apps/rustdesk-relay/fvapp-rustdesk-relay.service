@@ -4,7 +4,7 @@ PartOf=fvapp-rustdesk.service
 
 [Service]
 Type=exec
-ExecStart=/apps/rustdesk/hbbr
+ExecStart=/usr/bin/hbbr
 WorkingDirectory=/apps/rustdesk/conf
 EnvironmentFile=/apps/rustdesk/conf/env
 RestartSec=10
