@@ -5,7 +5,7 @@ mkdir -p ./update
 pushd ./update
 for s in fvapp-rustdesk{-relay,-id,}; do systemctl stop $s; done
 wget "https://github.com/lejianwen/rustdesk-api/releases/latest/download/linux-armv7l.tar.gz"
-curl -sL https://api.github.com/repos/rustdesk/rustdesk-server/releases/latest | egrep 'download_url.+armhf' | awk -F'"' '{print $4}' | while read deb; do wget $deb; dpkg -i ./$(basename $deb); rm ./$(basename $deb); done
+curl -sL https://api.github.com/repos/lejianwen/rustdesk-server/releases/latest | egrep 'download_url.+armhf' | awk -F'"' '{print $4}' | while read deb; do wget $deb; dpkg -i ./$(basename $deb); rm ./$(basename $deb); done
 for act in {stop,disable}; do for bin in rustdesk-{hbbr,hbbs}; do echo systemctl $act $bin; done; done
 tar xvzf linux-armv7l.tar.gz
 chown -R admin:admin .
